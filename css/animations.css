@@ -1,0 +1,131 @@
+/* ============================================
+   TRAVELOOP — Animations & Keyframes
+   ============================================ */
+
+/* ── Keyframes ── */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translate3d(100%, 0, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes slideOutLeft { from { opacity: 1; transform: translate3d(0, 0, 0); } to { opacity: 0; transform: translate3d(-30%, 0, 0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translate3d(-100%, 0, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes slideOutRight { from { opacity: 1; transform: translate3d(0, 0, 0); } to { opacity: 0; transform: translate3d(30%, 0, 0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+@keyframes scaleOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.92); } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.5); } 70% { transform: scale(1.08); } to { opacity: 1; transform: scale(1); } }
+@keyframes bounceIn { 0% { opacity: 0; transform: scale(0.3); } 50% { opacity: 1; transform: scale(1.05); } 70% { transform: scale(0.95); } 100% { transform: scale(1); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.85; } }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+@keyframes rippleEffect { to { transform: scale(4); opacity: 0; } }
+@keyframes slideUp { from { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; } to { max-height: 500px; opacity: 1; } }
+@keyframes slideDown { from { max-height: 500px; opacity: 1; } to { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; } }
+@keyframes checkDraw { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+@keyframes progressShrink { from { width: 100%; } to { width: 0%; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes glowPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0.4); } 50% { box-shadow: 0 0 0 12px rgba(255, 112, 67, 0); } }
+@keyframes countBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes barGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes pieReveal { from { stroke-dasharray: 0 100; } }
+@keyframes toastIn { from { transform: translate3d(120%, 0, 0) scale(0.9); opacity: 0; } to { transform: translate3d(0, 0, 0) scale(1); opacity: 1; } }
+@keyframes toastOut { from { transform: translate3d(0, 0, 0) scale(1); opacity: 1; } to { transform: translate3d(120%, 0, 0) scale(0.9); opacity: 0; } }
+
+/* ── Scroll Animation Base ── */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+  transition: opacity var(--duration-moderate) var(--ease-out-expo),
+              transform var(--duration-moderate) var(--ease-out-expo);
+}
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger delays */
+.stagger-1 { transition-delay: 80ms; }
+.stagger-2 { transition-delay: 160ms; }
+.stagger-3 { transition-delay: 240ms; }
+.stagger-4 { transition-delay: 320ms; }
+.stagger-5 { transition-delay: 400ms; }
+
+/* ── Page Transitions ── */
+.page-enter { animation: slideInRight var(--duration-page) var(--ease-out-expo) forwards; }
+.page-exit { animation: slideOutLeft var(--duration-page) var(--ease-standard) forwards; }
+.page-enter-back { animation: slideInLeft var(--duration-page) var(--ease-out-expo) forwards; }
+.page-exit-back { animation: slideOutRight var(--duration-page) var(--ease-standard) forwards; }
+.page-fade-in { animation: fadeIn var(--duration-normal) var(--ease-standard) forwards; }
+.page-fade-out { animation: fadeOut var(--duration-fast) var(--ease-standard) forwards; }
+
+/* ── Skeleton Shimmer ── */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-container-high) 25%, var(--surface-container) 50%, var(--surface-container-high) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+.skeleton-text { height: 14px; border-radius: var(--radius-xs); margin-bottom: var(--space-8); }
+.skeleton-text.w-60 { width: 60%; }
+.skeleton-text.w-80 { width: 80%; }
+.skeleton-text.w-40 { width: 40%; }
+.skeleton-title { height: 24px; width: 50%; border-radius: var(--radius-xs); margin-bottom: var(--space-16); }
+.skeleton-card {
+  height: 200px;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-16);
+}
+.skeleton-avatar { width: 48px; height: 48px; border-radius: var(--radius-full); }
+.skeleton-image { width: 100%; height: 180px; border-radius: var(--radius-lg); }
+
+/* ── Ripple ── */
+.ripple-container { position: relative; overflow: hidden; }
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+}
+
+/* ── Splash Screen ── */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-splash);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s var(--ease-standard), visibility 0.5s;
+}
+.splash-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.splash-logo {
+  font-family: var(--font-headline);
+  font-size: 42px;
+  font-weight: 700;
+  color: white;
+  animation: pulse 2s ease-in-out infinite;
+  letter-spacing: -0.02em;
+}
+.splash-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-top: var(--space-24);
+}
+
+/* ── Image Lazy Load ── */
+.lazy-image {
+  filter: blur(10px);
+  transform: scale(1.05);
+  transition: filter 0.5s var(--ease-standard), transform 0.5s var(--ease-standard);
+}
+.lazy-image.loaded {
+  filter: blur(0);
+  transform: scale(1);
+}
